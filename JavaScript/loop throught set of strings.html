@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hello there</title>
+	<link rel="stylesheet" href="">
+</head>
+<body>
+	<div id="app"></div>
+	<script>
+		const el = document.getElementById('app');
+		const edibles = [
+			'carrot', 'cheese', 'green bean', 'cucumber', 'bell pepper',
+			'onion', 'pizza', 'aubergine', 'parsley', 'bread'
+		];
+		el.innerHTML = edibles[0];
+		setInterval(() => {
+			const i = Math.floor(Math.random() * edibles.length);
+			el.innerHTML = edibles[i];
+		}, 2000);
+	</script>
+</body>
+</html>

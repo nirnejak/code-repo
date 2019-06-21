@@ -1,0 +1,4 @@
+Primitive Types:
+	Their value change only for Component.
+Referenced Type:
+	One value is shared amond all Components.

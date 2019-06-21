@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Keyboard Events</title>
+	<link rel="stylesheet" href="style.css">
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<br><br>
+	<div id="vue-app" class="ui grid">
+		<div class="five wide column"></div>
+		<div class="six wide column">
+			<form class="ui form message">
+				<h1>Keyboard Events</h1>
+				<div class="field">
+					<label>Name : </label>
+					<input type="text" v-on:keyup.enter="logName"/>
+				</div>
+				<div class="field">
+					<label>Age : </label>
+					<input type="text" v-on:keyup.alt.enter="logAge"/>
+				</div>
+			</form>
+		</div>
+		<div class="five wide column"></div>
+	</div>
+
+	<script src="app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+</body>
+</html>

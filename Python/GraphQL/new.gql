@@ -1,0 +1,28 @@
+{
+	order(id:"YIO689634642386JAKFSR70R87") {
+		orderType
+		orderStatus
+		delivered
+		deliveryDate
+		storeName
+		currency
+		lineItems {
+			lineItemId
+		}
+	}
+}
+
+
+/*
+
+MySQL
+PostgreSQL
+MongoDB
+memCached
+Redis
+
+Python
+Flask
+Django
+
+*/

@@ -1,0 +1,10 @@
+background-color: green;
+background-image: url(images/shadow.gif);
+background-position: right;
+background-repeat: no-repeat;
+
+
+
+background: green url(images/shadow.gif) right no-repeat;
+
+background: linear-gradient(0deg, rgba(2,173,231,0.5), rgba(2,173,231,0.5)), url(images/mba-grid-5px-bg.png) repeat;

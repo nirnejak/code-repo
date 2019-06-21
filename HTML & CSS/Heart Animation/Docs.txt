@@ -1,0 +1,9 @@
+N	-	Ice Coffee
+N	-	Beach
+Y	-	Dancing
+N	-	Netflix
+Y	-	Hug...not Kiss
+N	-	Beard
+Y	-	Friends
+N	-	Arrange Marrige
+Y	-	Spicy

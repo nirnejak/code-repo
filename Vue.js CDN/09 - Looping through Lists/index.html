@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Looping through lists</title>
+	<link rel="stylesheet" href="style.css">
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<br><br>
+	<div id="vue-app" class="ui grid">
+		<div class="five wide column"></div>
+		<div class="six wide column">
+			<div class="ui message">
+				<h1>Looping through lists</h1>
+				<button v-on:click="" class="ui button teal"></button>
+
+				<ul class="ui relaxed divided list">
+					<li v-for="character in characters" class="item">{{ character }}</li>
+				</ul>
+				<br>
+				<ul class="ui relaxed divided list">
+					<li v-for="(ninja, index) in ninjas" class="item">{{ index }}. {{ ninja.name }} is {{ ninja.age }} years old</li>
+				</ul>
+				<br>
+				<template v-for="(ninja, index) in ninjas">
+					<h3>{{ ++index }}. {{ ninja.name }}</h3>
+					<p>{{ ninja.age }} years old</p>
+				</template>
+				<br>
+				<template v-for="ninja in ninjas">
+					<div v-for="(val,key) in ninja">
+						<p>{{ key }} - {{ val }}</p>
+					</div>
+				</template>
+
+			</div>
+		</div>
+		<div class="five wide column"></div>
+	</div>
+
+	<script src="app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+</body>
+</html>

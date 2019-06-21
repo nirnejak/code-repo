@@ -1,0 +1,88 @@
+<!doctype html>
+<html>
+<head>
+<title>Inkoop Assessment Code</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+
+</head>
+<body class="container">
+    <br>
+    <h3>Number Game</h3>
+    <div id="app">
+        <h4 id="randomNumbers">
+            Random Numbers: <br>
+            <strong v-for="randomNumber in randomNumbers">{{randomNumber}} </strong>
+        </h4>
+        <button id="startButton" @click="playGame" :disabled="isDisabled">Start</button>
+        <div>You have <span id="moneyLeft">{{money}}</span> INR</div>
+        <div id="message">{{message}}</div>
+    </div>
+
+    <!-- JS -->
+    <script type="text/javascript">
+        new Vue({
+            el: '#app',
+            data: {
+                money: 1000,
+                randomNumbers: [],
+                message: ''
+            },
+            methods: {
+                playGame: function() {
+                    if (this.money >= 100){
+                        this.money -= 100;
+                        this.randomNumbers = [this.generateRandom(), this.generateRandom(), this.generateRandom()];
+
+                        // Checking for Game Conditions
+                        if (this.randomNumbers[0] == this.randomNumbers[1] && this.randomNumbers[0] == this.randomNumbers[2]) {
+                            // All the elements are Same
+                            this.money += 1000;
+                            this.message = 'You were lucky this time, you got 1000 INT as all the numbers are same';
+                        } else if (this.randomNumbers.every((element) => element % 2 != 0)){
+                            // All the elements are odd
+                            this.money += 300;
+                            this.message = 'You were lucky this time, you got 300 INR as all the numbers are odd';
+                        } else if (this.randomNumbers.every((element) => element % 2 == 0)) {
+                            // All the elements are even
+                            this.money += 300;
+                            this.message = 'You were lucky this time, you got 300 INR as all the numbers are even';
+                        } else if (this.isOneDifference(this.randomNumbers)){
+                            // Numbers are in difference of 1
+                            this.money += 800;
+                            this.message = 'You were lucky this time, you got 800 INR as all the numbers have difference 1';
+                        } else {
+                            this.message = 'You were not lucky this time';
+                        }
+                    } else {
+                        // Game over since user has money less than 100 INR                        
+                        this.message = 'Game Over';
+                    }
+                },
+                // Check if numbers have difference of 1
+                isOneDifference: function(nums) {
+                    nums = nums.sort();
+                    if (((nums[0]+1) == nums[1]) && ((nums[1]+1) == nums[2])){
+                        return true;
+                    } else {
+                        return false;
+                    }
+                },
+                // Generate Random Numbers
+                generateRandom: function() {
+                    return Math.floor(Math.random() * 9);
+                }
+            },
+            computed: {
+                isDisabled: function() {
+                    return this.money < 100;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

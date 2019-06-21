@@ -1,0 +1,107 @@
+<!doctype html>
+<html>
+<head>
+<title>Inkoop Assessment Code</title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+<link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+<link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
+</head>
+<body class="container">
+    <h1>Number Game</h1>
+    <p>Build a game in js with following rules</p>
+    <ul>
+        <li>User has 1000 INR when he starts the game</li>
+        <li>Every try(click on start) is charged 100 INR</li>
+        <li>Game is over if user has less than 100 INR</li>
+        <li>Every try generates three random numbers, each random number is in 0-9 range</li>
+        <li>If all the numbers are odd/even (eg. 2 4 6), user gets 300 INR</li>
+        <li>If the numbers are in sequence with difference of 1 in any order (eg. 2 3 4 or 3 2 4 or 4 6 5), user gets 800 INR</li>
+        <li>If all the numbers are same (eg. 4 4 4), user gets 1000 INR</li>
+        <li>Else user gets no money</li>
+    </ul>
+    </div>
+
+    <h3>Game</h3>
+    <div>You have <span id="moneyLeft">1000</span> INR</div>
+    <button id="startButton">Start</button>
+    <h3 id="randomNumbers">1 2 3</h3>
+    <div id="message"></div>
+
+    <!-- Markup is untouched -->
+    <!-- Vanilla Javascript Logic -->
+    <script type="text/javascript">
+        // Select DOM Items
+        const moneyLeft = document.querySelector('#moneyLeft');
+        const startButton = document.querySelector('#startButton');
+        const randomNumbers = document.querySelector('#randomNumbers');
+        const message = document.querySelector('#message');
+
+        // Set Initial money
+        let money = 1000;
+        let hasStarted = false;
+
+        startButton.addEventListener('click', playGame);
+
+        function playGame() {
+            if (!hasStarted){
+                const p = document.querySelector('p');
+                p.style.display = 'none';
+                const ul = document.querySelector('ul');
+                ul.style.display = 'none';
+            }
+            if (money >= 100) {
+                money -= 100;
+                let randomNum1 = generateRandom();
+                let randomNum2 = generateRandom();
+                let randomNum3 = generateRandom();
+
+                // Checking for Game Conditions
+                if (randomNum1 == randomNum2 && randomNum1 == randomNum3) {
+                    money += 1000;
+                    message.innerHTML = 'You were lucky this time, you got 1000 INT as all the numbers are same';
+                } else if (randomNum1%2 != 0 && randomNum2%2 != 0 && randomNum3%2 != 0){
+                    money += 300;
+                    message.innerHTML = 'You were lucky this time, you got 300 INR as all the numbers are odd';
+                } else if (randomNum1%2 == 0 && randomNum2%2 == 0 && randomNum3%2 == 0) {
+                    money += 300;
+                    message.innerHTML = 'You were lucky this time, you got 300 INR as all the numbers are even';
+                } else if (isOneDifference([randomNum1, randomNum2, randomNum3])){
+                    money += 800;
+                    message.innerHTML = 'You were lucky this time, you got 800 INR as all the numbers have difference 1';
+                } else {
+                    message.innerHTML = 'You were not lucky this time';
+                }
+
+                // Update DOM
+                randomNumbers.innerHTML = `${randomNum1} ${randomNum2} ${randomNum3}`;
+                moneyLeft.innerHTML = money;
+
+                // Disable the Start Button if there's not enough money to play
+                if (money < 100) {
+                    startButton.disabled = true;
+                }
+            } else {
+                // Game over since user has less than 100 INR
+                message.innerHTML = 'Game Over';
+            }
+        }
+
+        // Check if numbers have difference of 1
+        function isOneDifference(nums) {
+            nums = nums.sort();
+            if (((nums[0]+1) == nums[1]) && ((nums[1]+1) == nums[2])){
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        // Generate Random Numbers
+        function generateRandom() {
+            return Math.floor(Math.random() * 9);
+        }
+    </script>
+</body>
+</html>

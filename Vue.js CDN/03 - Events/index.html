@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Events</title>
+	<link rel="stylesheet" href="style.css">
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+
+	<div id="vue-app">
+		<h1>Events</h1>
+		<p>My Age is : {{ age }}</p>
+		<button v-on:click.once="age++" class="ui button teal">Add a Year</button>
+		<button @click="age--" class="ui button teal">Subtract A Year</button>
+
+		<button @dblclick="add(10)" class="ui button teal">Add 10 Years</button>
+		<button v-on:dblclick="sub(10)" class="ui button teal">Subtract 10 Years</button>
+
+		<br><br>
+
+		<div id="canvas" v-on:mousemove="updateXY">
+			{{ x }},{{ y }}
+		</div>
+
+		<a v-on:click.prevent="click" href="http://www.thenetninja.co.uk">The Net Ninja</a>
+	</div>
+
+	<script src="app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+</body>
+</html>

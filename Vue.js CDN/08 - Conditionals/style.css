@@ -1,0 +1,23 @@
+#canvas {
+	width : 600px;
+	padding : 200px 20px;
+	text-align : center;
+	border: 1px solid #333;
+}
+
+
+span { 
+	background: #009C95;
+	display: inline-block;
+	padding: 10px;
+	color: #fff;
+	margin : 10px 0;	
+}
+.available span {
+	background : #FF8080;
+}
+
+.nearby span:after {
+	content : "Nearby";
+	margin-left: 10px;
+}

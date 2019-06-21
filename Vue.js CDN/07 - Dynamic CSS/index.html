@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Dynamic CSS</title>
+	<link rel="stylesheet" href="style.css">
+
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.css">
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+</head>
+<body>
+	<br><br>
+	<div id="vue-app" class="ui grid">
+		<div class="five wide column"></div>
+		<div class="six wide column">
+			<div class="ui message">
+				<h1>Dynamic CSS</h1>
+				<h2>Example 1</h2>
+				
+				<div v-on:click="available = !available" v-bind:class="{available : available}">
+					<span>Jitendra</span>
+				</div>
+				
+				<h2>Example 2</h2>
+				<button v-on:click="nearby = !nearby" class="ui button teal">Toggle Nearby</button>
+				<button v-on:click="available = !available" class="ui button teal">Toggle Available</button>
+				<div v-bind:class="compClasses">
+					<span>Jitendra</span>
+				</div>
+			</div>
+		</div>
+		<div class="five wide column"></div>
+	</div>
+
+	<script src="app.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.3.1/semantic.min.js"></script>
+</body>
+</html>

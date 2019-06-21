@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/necolas/normalize.css/master/normalize.css">
+    <link rel="stylesheet" href="https://cdn.rawgit.com/milligram/milligram/master/dist/milligram.min.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
+</head>
+
+<body>
+    <br><br>
+    <div id="app" class="container">
+        <p>Whatever user writes in one textbox must be copied in other textboxes as well:</p>
+        <input type="text" v-model=text>
+        <input type="text" v-model=text>
+        <input type="text" v-model=text>
+    </div>
+
+    <script>
+        new Vue({
+            el: "#app",
+            data: {
+                text: ''
+            }
+        })
+    </script>
+</body>
+
+</html>

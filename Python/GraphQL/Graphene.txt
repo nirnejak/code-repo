@@ -1,0 +1,25 @@
+What is Graphene?
+	GraphQL Implementation for Python
+	Is very popular
+		2nd only to FB Implementation
+	Has many production users
+		Yelp, Dailymotion, Mozilla
+	Integrations with popular frameworks
+		Django, Flask, Pyramid
+	Integrations with popular ORMs
+		Django ORM, SQLAlchemy, Peewee, GAE
+
+Terminologies:
+	Type/Objects: Sort of ike serializers for GraphQL
+	Schema: The container of all the GraphQL types at your disposal
+	Resolver: The function that is executed to give back the data for a single attribute of a type/object
+	Query: What you use to get or set data using GraphQL
+	Mutations: Subset of Queries that is used to change/modify data.
+
+The ORM Models:
+	All the models are SQLAlchemy Models
+	They inherit from Base
+	They also inherit from PrimaryKeyMixin
+
+Graphene Objects:
+	Very similar to what you'd get in Django Rest Framework or other serializers.
